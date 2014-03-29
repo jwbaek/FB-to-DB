@@ -76,7 +76,6 @@ var load_thumbnails = function() {
     for (var i = 0; i < arr_len; i++) {
         var source = arr[i].thumbnail_url;
         arr_thumbs[i] = <option data-img-src={source} value={i}>hi</option>
-
     }
     React.renderComponent(
         <div>{arr_thumbs}</div>,
