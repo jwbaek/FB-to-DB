@@ -8,7 +8,11 @@ Contributors:
 * Jackie Baek
 
 Description:
-FB-to-DB is a simple web application that allows you to backup up all your favorite Facebook photos to Dropbox.  This application utilizes Twitter Bootstrap framework, Dropbox API and Facebook Graph API.  
+FB-to-DB is a simple web application that allows you to backup up all your Facebook photos you are tagged in to Dropbox.  This application utilizes 
+
+* Twitter Bootstrap framework
+* Dropbox API 
+* Facebook Graph API  
 
 Installation:
 
