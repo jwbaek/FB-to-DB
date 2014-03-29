@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 	// Upon being logged into Facebook
 	// Transition from fb-login to db-login
-
+    $("select").imagepicker();
 
 
 });
@@ -45,12 +45,14 @@ $(document).ready(function(){
 function login() {
     console.log('LOGIN TEST');
     FB.api('/me/photos', function (response) {
+        // response.data has all the data
         files = [];
         console.log(response);
         for (var i = 0; i<response.data.length; i++) {
             var curr = response.data[i];
-            console.log(curr.source);
-            files.push({url: curr.source});
+            url = curr.source;
+            files.push({url: url, filename: 'FacebookPhoto'+i});
+            console.log(url);
         }
         console.log('files', files);
         options = {};
