@@ -84,7 +84,6 @@ var load_thumbnails = function() {
             </a>
         </div>;
 
-
     }
     React.renderComponent(
         <div>{arr_thumbs}</div>,

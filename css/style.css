@@ -11,8 +11,13 @@ body {
 .f-title {
 	text-align: center;
 	color: #aaa;
-	font-family: 'Varela Round', sans-serif;
 	padding: 50px;
+}
+
+.f-explain {
+	margin-top: 15px;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 26px;
 }
 
 .f-container {
