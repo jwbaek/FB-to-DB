@@ -3,11 +3,9 @@
 // FB.api(path, method, params, callback)
 // https://developers.facebook.com/docs/javascript/reference/FB.api
 
-function example() {
-    FB.api('/me/photos', function(response) {
-        console.log(response);
+function login_test() {
+    console.log('LOGIN TEST');
+    FB.api('/me/photos', function (response) {
+        console.log(response, 'HI');
     });
 }
-
-example()
-console.log('test');

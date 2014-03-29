@@ -3,7 +3,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-	<fb:login-button autologoutlink="true" scope="publish_stream"></fb:login-button>
+<script src="js/script.js"></script>
+	<fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login_test()"></fb:login-button>
+	<button onclick="test()">test</button>
 	<div class="f-container" data-js="container">
 		<div class="f-nav" data-js="nav">
 			<ol>
@@ -17,7 +19,6 @@
 		</div>
 	</div>
 
-<script src="js/script.js"></script>
 
 <div id="fb-root"></div>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -27,9 +28,14 @@
     window.fbAsyncInit = function() {
       FB.init({appId: '458180437615708', status: true, cookie: true,
                xfbml: true});
-      FB.Event.subscribe('{% if current_user %}auth.logout{% else %}auth.login{% endif %}', function(response) {
-        window.location.reload();
+      FB.api('/me/photos', function(response) {
+        console.log('RESPONSE:', response);
       });
+      // FB.Event.subscribe('{% if current_user %}auth.logout{% else %}auth.login{% endif %}', function(response) {
+      //   window.location.reload();
+
+      // });
+
     };
     (function() {
       var e = document.createElement('script');
