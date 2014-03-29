@@ -45,6 +45,16 @@ $(document).ready(function(){
 function login() {
     console.log('LOGIN TEST');
     FB.api('/me/photos', function (response) {
-        console.log(response, 'HI');
+        files = [];
+        console.log(response);
+        for (var i = 0; i<response.data.length; i++) {
+            var curr = response.data[i];
+            console.log(curr.source);
+            files.push({url: curr.source});
+        }
+        console.log('files', files);
+        options = {};
+        options['files'] = files;
+        Dropbox.save(options);
     });
 }

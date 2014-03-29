@@ -44,6 +44,7 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="d9h5zyw7txjfnfm"></script>
 <!-- get our in-house script -->
 <script src="js/script.js"></script>
 <!-- get FB button -->
@@ -56,6 +57,7 @@
       FB.api('/me/photos', function(response) {
         console.log('RESPONSE:', response);
       });
+
       // FB.Event.subscribe('{% if current_user %}auth.logout{% else %}auth.login{% endif %}', function(response) {
       //   window.location.reload();
 
