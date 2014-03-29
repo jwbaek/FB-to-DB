@@ -12,10 +12,15 @@ body {
 	text-align: center;
 	color: #aaa;
 	font-family: 'Varela Round', sans-serif;
+	padding: 50px;
 }
 
 .f-container {
+	text-align: center;
+}
 
+.page-fb-login {
+	text-align: center;
 }
 
 .f-nav {
