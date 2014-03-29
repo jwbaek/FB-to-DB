@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
+	<fb:login-button autologoutlink="true" scope="publish_stream"></fb:login-button>
 	<div class="f-container" data-js="container">
 		<div class="f-nav" data-js="nav">
 			<ol>
@@ -22,20 +23,19 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '458180437615708',
-          status     : true,
-          xfbml      : true
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+    window.fbAsyncInit = function() {
+      FB.init({appId: '458180437615708', status: true, cookie: true,
+               xfbml: true});
+      FB.Event.subscribe('{% if current_user %}auth.logout{% else %}auth.login{% endif %}', function(response) {
+        window.location.reload();
+      });
+    };
+    (function() {
+      var e = document.createElement('script');
+      e.type = 'text/javascript';
+      e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+      e.async = true;
+      document.getElementById('fb-root').appendChild(e);
+    }());
     </script>
 </body>
