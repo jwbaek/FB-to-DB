@@ -11,17 +11,15 @@
 
     <!-- Title -->
     <div class="f-title">
-      <h2> Facebook to Dropbox </h2>
-      <hr>
+      <img src="img/logo.png" />
     </div>
 
     <!-- Put your content here -->
 		<div class="f-content" data-js="content">
 
       <!-- Facebook login page-->
-      <div data-js="page-fb-login">
-        Facebook login button here.
-        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login"></fb:login-button>
+      <div data-js="page-fb-login" class="page-fb-login">
+        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login" size="large"></fb:login-button>
       </div>
 
       <!-- Album sync page-->
