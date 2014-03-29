@@ -3,8 +3,15 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-	<fb:login-button autologoutlink="true" scope="publish_stream"></fb:login-button>
 	<div class="f-container" data-js="container">
+
+    <!-- Title -->
+    <div class="f-title">
+      <h2> Facebook to Dropbox </h2>
+      <hr>
+    </div>
+
+    <!-- Just a pretty navigation -->
 		<div class="f-nav" data-js="nav">
 			<ol>
 				<li>Login to Facebook</li>
@@ -12,10 +19,26 @@
 				<li>Save ALL the photos!</li>
 			</ol>
 		</div>
+    <!-- Put your content here -->
 		<div class="f-content" data-js="content">
-		Sample Container here.
+
+      <!-- Facebook login page-->
+      <div data-js="fb-login">
+        <fb:login-button autologoutlink="true" scope="publish_stream"></fb:login-button>
+      </div>
+
+      <!-- Dropbox login page-->
+      <div data-js="db-login">
+      </div>
+
+      <!-- Album sync page-->
+      <div data-js="album-sync">
+      </div>
+
 		</div>
 	</div>
+
+<!-- Extra script stuff down here -->
 
 <script src="js/script.js"></script>
 
