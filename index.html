@@ -29,6 +29,7 @@
        <button onclick="save_to_dropbox()" type="button" class="btn btn-primary" data-toggle="button">Save to Dropbox</button>
 		</div>
 	</div>
+<div id="fb-root"></div>
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -40,29 +41,4 @@
 
 <script src="image-picker/image-picker.js"></script>
 <link rel="stylesheet" type="text/css" href="image-picker/image-picker.css" />
-<!-- get FB button -->
-<div id="fb-root"></div>
-    <script>
-
-    window.fbAsyncInit = function() {
-      FB.init({appId: '458180437615708', status: true, cookie: true,
-               xfbml: true});
-      FB.api('/me/photos', function(response) {
-        console.log('RESPONSE:', response);
-      });
-
-      // FB.Event.subscribe('{% if current_user %}auth.logout{% else %}auth.login{% endif %}', function(response) {
-      //   window.location.reload();
-
-      // });
-
-    };
-    (function() {
-      var e = document.createElement('script');
-      e.type = 'text/javascript';
-      e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-      e.async = true;
-      document.getElementById('fb-root').appendChild(e);
-    }());
-    </script>
 </body>

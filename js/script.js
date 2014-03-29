@@ -1,9 +1,35 @@
-
 var $container = $('[data-js="container"]');
 
 var $content = $('[data-js="content"]');
 var $page_fb = $('[data-js="page-fb-login"]');
 var $page_upload = $('[data-js="page-album-upload"]');
+
+window.fbAsyncInit = function() {
+      FB.init({appId: '458180437615708', status: true, cookie: true,
+               xfbml: true});
+
+      // Check if user is connected already
+      // Hide/show login button accordingly
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            $page_upload.show();
+        } else {
+            $page_upload.hide();
+        }
+      });
+
+      FB.api('/me/photos', function(response) {
+        console.log('RESPONSE:', response);
+      });
+
+    };
+    (function() {
+      var e = document.createElement('script');
+      e.type = 'text/javascript';
+      e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+      e.async = true;
+      document.getElementById('fb-root').appendChild(e);
+    }());
 
 /* -------------------
  * Callback functions
@@ -11,7 +37,6 @@ var $page_upload = $('[data-js="page-album-upload"]');
 
 // Called when the Facebook login is successful
 function fbLoginComplete() {
-	$page_fb.hide();
 	$page_upload.show();
 }
 
