@@ -5,7 +5,6 @@ $(document).ready(function(){
 	 */
 
 	var $container = $('[data-js="container"]');
-
 	var $nav = $('[data-js="nav"]');
 	var $nav_fb = $('[data-js="nav-fb-login"]');
 	var $nav_db = $('[data-js="nav-db-login"]');
@@ -36,17 +35,16 @@ $(document).ready(function(){
 		$page_upload.show();
 	}
 
-	// FB.api(path, method, params, callback)
-	// https://developers.facebook.com/docs/javascript/reference/FB.api
-	function example() {
-	    FB.api('/me/photos', function(response) {
-	        console.log(response);
-	    });
-	}
-
-	example();
-
 	// Upon being logged into Facebook
 	// Transition from fb-login to db-login
 
+
+
 });
+
+function login() {
+    console.log('LOGIN TEST');
+    FB.api('/me/photos', function (response) {
+        console.log(response, 'HI');
+    });
+}
