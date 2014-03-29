@@ -22,12 +22,12 @@ function login() {
     fbLoginComplete();
     FB.api('/me/photos', function (response) {
         // response.data has all the data
-        files = [];
+        var files = [];
         console.log(response);
         $("select").imagepicker();
         for (var i = 0; i<response.data.length; i++) {
             var curr = response.data[i];
-            url = curr.source;
+            var url = curr.source;
             files.push({url: url, filename: 'FacebookPhoto'+i});
             console.log(url);
             PHOTO_OBJECTS.push({
@@ -41,4 +41,15 @@ function login() {
         options['files'] = files;
         Dropbox.save(options);
     });
+}
+
+function save_to_dropbox(urls) {
+    var files = [];
+    for (var i = 0; i < urls.length; i++) {
+        var url = urls[i];
+        files.push({url: url, filename: 'FacebookPhoto'+i});
+    }
+    options = {};
+    options['files'] = files;
+    Dropbox.save(options);
 }
