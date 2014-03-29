@@ -15,8 +15,8 @@ function fbLoginComplete() {
 	$page_upload.show();
 }
 
+// each object has a url and a thumbnail_url
 var PHOTO_OBJECTS = [];
-
 
 function login() {
     fbLoginComplete();
@@ -43,7 +43,12 @@ function login() {
     });
 }
 
-function save_to_dropbox(urls) {
+function save_to_dropbox() {
+    var urls = [];
+    for (var i = 0; i<PHOTO_OBJECTS.length; i++) {
+        var obj = PHOTO_OBJECTS[i];
+        urls.push(obj.url);
+    }
     var files = [];
     for (var i = 0; i < urls.length; i++) {
         var url = urls[i];
