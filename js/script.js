@@ -6,6 +6,7 @@ var $page_fb = $('[data-js="page-fb-login"]');
 var $page_upload = $('[data-js="page-album-upload"]');
 
 
+$page_upload.hide();
 window.fbAsyncInit = function() {
       FB.init({appId: '458180437615708', status: true, cookie: true,
                xfbml: true});
@@ -14,7 +15,6 @@ window.fbAsyncInit = function() {
       // Hide/show login button accordingly
       FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
-            $page_upload.show();
             get_facebook_photos();
         } else {
             $page_upload.hide();
@@ -36,7 +36,6 @@ window.fbAsyncInit = function() {
 
 // Called when the Facebook login is successful
 function fbLoginComplete() {
-	$page_upload.show();
 }
 
 // each object has a url and a thumbnail_url
@@ -78,6 +77,7 @@ var load_thumbnails = function() {
         <div>{arr_thumbs}</div>,
         album_container
         );
+    $page_upload.show();
     $('#jackie').show();
     $("select").imagepicker();
 };
