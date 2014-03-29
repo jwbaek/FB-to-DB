@@ -82,6 +82,14 @@ var load_thumbnails = function() {
     $("select").imagepicker();
 };
 
+function on_all(selected) {
+    $("#jackie > option").each(function() {
+        $(this).prop('selected', selected);
+    });
+    $("select").imagepicker();
+}
+
+
 function save_to_dropbox() {
     var selected_photos = $('.selected img');
     var urls = [];

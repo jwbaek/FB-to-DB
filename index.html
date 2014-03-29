@@ -28,10 +28,12 @@
 
       <!-- Album sync page-->
       <div data-js="page-album-upload" class="page-album-upload">
+        <button onclick="on_all(true)" type="button" class="btn btn-primary" data-toggle="button">Select All</button>
+        <button onclick="on_all(false)" type="button" class="btn btn-primary" data-toggle="button">Deselect All</button>
   	    <select id='jackie' multiple="multiple" style="border:0px" class="image-picker show-html">
     		</select>
-        <button onclick="save_to_dropbox()" type="button" class="btn btn-primary" data-toggle="button">Save to Dropbox</button>
 
+        <button onclick="save_to_dropbox()" type="button" class="btn btn-primary" data-toggle="button">Save to Dropbox</button>
       </div>
 
 		</div>
