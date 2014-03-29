@@ -1,22 +1,19 @@
 html {
   background: url('../img/bg.png');
+  height: 100%;
 }
 
 body {
   font: 12px arial;
   color: #333333;
-  height: 100%;
-  background: url('../img/bottom.png') bottom center no-repeat;
-}
-
-.active {
-	color: red;
+  background: url('../img/bottom.png') no-repeat;
+  background-position: center bottom;
 }
 
 .f-title {
 	text-align: center;
 	color: #aaa;
-	padding: 50px;
+	padding: 20px;
 }
 
 .f-explain {
@@ -30,7 +27,8 @@ body {
 }
 
 .page-fb-login {
-	text-align: center;
+	text-align: right;
+	padding: 20px;
 }
 
 .f-nav {
@@ -38,5 +36,22 @@ body {
 }
 
 .f-content {
-
+	padding-bottom: 250px;
 }
+
+/* Overrides to image-picker */
+
+ul.thumbnails.image_picker_selector li .thumbnail {
+	border-width: 2px;
+	border-color: #ddd;
+}
+
+.thumbnail {
+	margin: 0;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail.selected {
+	background: none;
+	border-color: #87aaeb;
+}
+

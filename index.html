@@ -1,31 +1,34 @@
 <head>
     <title> FB-to-DB </title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- image picker -->
     <link rel="stylesheet" type="text/css" href="image-picker/image-picker.css" />
+    <!-- in-house CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
 
-	<div class="f-container container" data-js="container">
+   <div data-js="page-fb-login" class="page-fb-login">
+        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login" size="large"></fb:login-button>
+      </div>
 
+	<div class="f-container container" data-js="container">
+  
     <!-- Title -->
     <div class="f-title">
+       <!-- Facebook login page-->
+     
       <img src="img/logo.png" />
       <div class="f-explain">
-        Photos you're tagged in &rarr; Dropbox.
+        FB2DB
       </div>
     </div>
 
     <!-- Put your content here -->
 		<div class="f-content" data-js="content">
-
-      <!-- Facebook login page-->
-      <div data-js="page-fb-login" class="page-fb-login">
-        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login" size="large"></fb:login-button>
-      </div>
-
       <!-- Album sync page-->
       <div data-js="page-album-upload" class="page-album-upload">
         <button onclick="on_all(true)" type="button" class="btn btn-primary" data-toggle="button">Select All</button>
