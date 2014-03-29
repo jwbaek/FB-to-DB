@@ -1,6 +1,19 @@
 $(document).ready(function(){
 
-	console.log('jquery works');
+	// Grab the window elements
+	var $container = $('[data-js="container"]');
+
+	var $nav = $('[data-js="nav"]');
+	var $nav_fb = $('[data-js="nav-fb-login"]');
+	var $nav_db = $('[data-js="nav-db-login"]');
+	var $nav_upload = $('[data-js="nav-album-upload"]');
+
+	var $content = $('[data-js="content"]');
+	var $page_fb = $('[data-js="page-fb-login"]');
+	var $page_db = $('[data-js="page-db-login"]');
+	var $page_upload = $('[data-js="page-album-upload"]');
+
+	// Add event listeners
 
 	// FB.api(path, method, params, callback)
 	// https://developers.facebook.com/docs/javascript/reference/FB.api
@@ -11,5 +24,8 @@ $(document).ready(function(){
 	}
 
 	example();
+
+	// Upon being logged into Facebook
+	// Transition from fb-login to db-login
 
 });
