@@ -48,10 +48,8 @@ function login() {
     fbLoginComplete();
     FB.api('/me/photos', function (response) {
         // response.data has all the data
-        load_thumbnails();
         var files = [];
         console.log(response);
-        $("select").imagepicker();
         for (var i = 0; i<response.data.length; i++) {
             var curr = response.data[i];
             var url = curr.source;
@@ -64,31 +62,30 @@ function login() {
         }
         console.log('files', files);
         console.log('OBJECTS', PHOTO_OBJECTS);
+        load_thumbnails();
         options = {};
         options['files'] = files;
-        Dropbox.save(options);
     });
 }
 
 var load_thumbnails = function() {
-    var arr = ["https://scontent-a.xx.fbcdn.net/hphotos-prn2/t1.0-9/s720x720/1978615_1492705100951653_801384525_n.jpg","https://scontent-a.xx.fbcdn.net/hphotos-prn2/t1.0-9/p320x320/1457641_10153061398634897_662043340_n.jpg"];
-    var album_container = document.getElementById("page-album-upload-row");
+    console.log('LOADING thumbnail')
+    var arr = PHOTO_OBJECTS;
+    console.log(arr);
+    var album_container = document.getElementById("jackie");
     var arr_len = arr.length;
     var arr_thumbs = []
     for (var i = 0; i < arr_len; i++) {
-        var source = arr[i];
+        var source = arr[i].thumbnail_url;
+        console.log(source);
 
-        arr_thumbs[i] = <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src={source}></img>
-            </a>
-        </div>;
-
+        arr_thumbs[i] = <option data-img-src={source} value={i}>hi</option>
     }
     React.renderComponent(
         <div>{arr_thumbs}</div>,
         album_container
         );
+    $("select").imagepicker();
 };
 
 function save_to_dropbox() {
