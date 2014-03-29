@@ -15,7 +15,7 @@
     <!-- Just a pretty navigation -->
 		<div class="f-nav" data-js="nav">
 			<ol>
-				<li data-js="nav-fb-login">Login to Facebook</li>
+				<li class="active" data-js="nav-fb-login">Login to Facebook</li>
 				<li data-js="nav-db-login">Login to Dropbox</li>
 				<li data-js="nav-album-upload">Save ALL the photos!</li>
 			</ol>
@@ -25,15 +25,18 @@
 
       <!-- Facebook login page-->
       <div data-js="page-fb-login">
+        Facebook login button here.
         <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login"></fb:login-button>
       </div>
 
       <!-- Dropbox login page-->
       <div data-js="page-db-login" class="hide">
+        Dropbox login button here.
       </div>
 
       <!-- Album sync page-->
       <div data-js="page-album-upload" class="hide">
+        Album display here.
       </div>
 
 		</div>
