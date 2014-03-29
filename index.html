@@ -14,81 +14,17 @@
       <hr>
     </div>
 
-    THUMBNAIL TEST
-    <select multiple="multiple" class="image-picker show-html">
-	  <option data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
-	  <option data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
-	  <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
-	  <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
-	</select>
-
-    <!-- Just a pretty navigation -->
-		<div class="f-nav" data-js="nav">
-			<ol>
-				<li class="active" data-js="nav-fb-login">Login to Facebook</li>
-				<li data-js="nav-album-upload">Save ALL the photos!</li>
-			</ol>
-		</div>
     <!-- Put your content here -->
 		<div class="f-content" data-js="content">
 
       <!-- Facebook login page-->
-
       <div data-js="page-fb-login">
         Facebook login button here.
         <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login"></fb:login-button>
-
       </div>
 
       <!-- Album sync page-->
-      <div data-js="page-album-upload">
-          <div class="container">
-            <div class="header">
-              <ul class="nav nav-pills pull-right">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-              <h3 class="text-muted">Project name</h3>
-            </div>
-
-            <div class="jumbotron">
-              <h1>Jumbotron heading</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-              <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-            </div>
-
-            <div class="row marketing">
-              <div class="col-lg-6">
-                <h4>Subheading</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-                <h4>Subheading</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-                <h4>Subheading</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-              </div>
-
-              <div class="col-lg-6">
-                <h4>Subheading</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-                <h4>Subheading</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-                <h4>Subheading</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-              </div>
-            </div>
-
-            <div class="footer">
-              <p>&copy; Company 2013</p>
-            </div>
-
-          </div> <!-- /container -->
-
-      <div data-js="page-album-upload" class="hide">
+      <div data-js="page-album-upload" style="display:none;">
         Album display here.
       </div>
 

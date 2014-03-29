@@ -1,8 +1,5 @@
 
 var $container = $('[data-js="container"]');
-var $nav = $('[data-js="nav"]');
-var $nav_fb = $('[data-js="nav-fb-login"]');
-var $nav_upload = $('[data-js="nav-album-upload"]');
 
 var $content = $('[data-js="content"]');
 var $page_fb = $('[data-js="page-fb-login"]');
@@ -14,8 +11,6 @@ var $page_upload = $('[data-js="page-album-upload"]');
 
 // Called when the Facebook login is successful
 function fbLoginComplete() {
-	$nav_fb.removeClass("active");
-	$nav_upload.addClass("active");
 	$page_fb.hide();
 	$page_upload.show();
 }
