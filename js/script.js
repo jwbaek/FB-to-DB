@@ -44,6 +44,7 @@ function login() {
 }
 
 function save_to_dropbox(urls) {
+	console.log('save to ropbox/1!!')
     var files = [];
     for (var i = 0; i < urls.length; i++) {
         var url = urls[i];
