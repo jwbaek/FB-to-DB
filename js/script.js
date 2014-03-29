@@ -34,17 +34,19 @@ window.fbAsyncInit = function() {
  * Callback functions
  */
 
-// Called when the Facebook login is successful
-function fbLoginComplete() {
-}
-
 // each object has a url and a thumbnail_url
 var PHOTO_OBJECTS = [];
 var THUMB_TO_URL = {};
 
 function login() {
-    fbLoginComplete();
-    get_facebook_photos();
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+        $page_upload.show();
+        get_facebook_photos();
+    } else {
+        $page_upload.hide();
+    }
+  });
 }
 
 function get_facebook_photos() {
