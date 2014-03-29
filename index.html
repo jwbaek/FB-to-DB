@@ -1,10 +1,12 @@
 <head>
     <title> FB-to-DB </title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<button onclick="test()">test</button>
-	<div class="f-container" data-js="container">
+
+	<div class="f-container container" data-js="container">
 
     <!-- Title -->
     <div class="f-title">
@@ -24,9 +26,11 @@
 		<div class="f-content" data-js="content">
 
       <!-- Facebook login page-->
+
       <div data-js="page-fb-login">
         Facebook login button here.
         <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login"></fb:login-button>
+
       </div>
 
       <!-- Dropbox login page-->
@@ -35,6 +39,53 @@
       </div>
 
       <!-- Album sync page-->
+      <div data-js="page-album-upload">
+          <div class="container">
+            <div class="header">
+              <ul class="nav nav-pills pull-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+              <h3 class="text-muted">Project name</h3>
+            </div>
+
+            <div class="jumbotron">
+              <h1>Jumbotron heading</h1>
+              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+            </div>
+
+            <div class="row marketing">
+              <div class="col-lg-6">
+                <h4>Subheading</h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+                <h4>Subheading</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+                <h4>Subheading</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+              </div>
+
+              <div class="col-lg-6">
+                <h4>Subheading</h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+                <h4>Subheading</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+                <h4>Subheading</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+              </div>
+            </div>
+
+            <div class="footer">
+              <p>&copy; Company 2013</p>
+            </div>
+
+          </div> <!-- /container -->
+
       <div data-js="page-album-upload" class="hide">
         Album display here.
       </div>
@@ -45,6 +96,8 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="d9h5zyw7txjfnfm"></script>
+<!-- get Bootstrap -->
+<script src="../js/bootstrap.min.js"></script>
 <!-- get our in-house script -->
 <script src="js/script.js"></script>
 <!-- get FB button -->
