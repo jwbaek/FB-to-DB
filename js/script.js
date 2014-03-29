@@ -43,25 +43,24 @@ function fbLoginComplete() {
 
 // each object has a url and a thumbnail_url
 var PHOTO_OBJECTS = [];
+var THUMB_TO_URL = {};
 
 function login() {
     fbLoginComplete();
     FB.api('/me/photos', function (response) {
         // response.data has all the data
         var files = [];
-        console.log(response);
         for (var i = 0; i<response.data.length; i++) {
             var curr = response.data[i];
             var url = curr.source;
+            var thumbnail_url = curr.images[curr.images.length-1].source;
             files.push({url: url, filename: 'FacebookPhoto'+i});
-            console.log(url);
             PHOTO_OBJECTS.push({
                 url:url,
-                thumbnail_url:curr.images[curr.images.length-1].source
+                thumbnail_url:thumbnail_url,
             });
+            THUMB_TO_URL[thumbnail_url] = url;
         }
-        console.log('files', files);
-        console.log('OBJECTS', PHOTO_OBJECTS);
         load_thumbnails();
         options = {};
         options['files'] = files;
@@ -71,14 +70,11 @@ function login() {
 var load_thumbnails = function() {
     console.log('LOADING thumbnail')
     var arr = PHOTO_OBJECTS;
-    console.log(arr);
     var album_container = document.getElementById("jackie");
     var arr_len = arr.length;
     var arr_thumbs = []
     for (var i = 0; i < arr_len; i++) {
         var source = arr[i].thumbnail_url;
-        console.log(source);
-
         arr_thumbs[i] = <option data-img-src={source} value={i}>hi</option>
 
     }
@@ -90,15 +86,19 @@ var load_thumbnails = function() {
 };
 
 function save_to_dropbox() {
+    var selected_photos = $('.selected img');
     var urls = [];
-    for (var i = 0; i<PHOTO_OBJECTS.length; i++) {
-        var obj = PHOTO_OBJECTS[i];
-        urls.push(obj.url);
+    for (var i = 0; i<selected_photos.length; i++) {
+        var curr = selected_photos[i];
+        var thumbnail_url = $(curr).attr('src');
+        var url = THUMB_TO_URL[thumbnail_url];
+        urls.push(url);
     }
-    var files = [];
+
+    var files = []; // to put into dropbox API
     for (var i = 0; i < urls.length; i++) {
         var url = urls[i];
-        files.push({url: url, filename: 'FacebookPhoto'+i});
+        files.push({url: url, filename: 'FacebookPhoto'+i+'.jpg'});
     }
     options = {};
     options['files'] = files;
