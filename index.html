@@ -3,26 +3,48 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-<script src="js/script.js"></script>
-	<fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login_test()"></fb:login-button>
 	<button onclick="test()">test</button>
 	<div class="f-container" data-js="container">
+
+    <!-- Title -->
+    <div class="f-title">
+      <h2> Facebook to Dropbox </h2>
+      <hr>
+    </div>
+
+    <!-- Just a pretty navigation -->
 		<div class="f-nav" data-js="nav">
 			<ol>
-				<li>Login to Facebook</li>
-				<li>Login to Dropbox</li>
-				<li>Save ALL the photos!</li>
+				<li data-js="nav-fb-login">Login to Facebook</li>
+				<li data-js="nav-db-login">Login to Dropbox</li>
+				<li data-js="nav-album-upload">Save ALL the photos!</li>
 			</ol>
 		</div>
+    <!-- Put your content here -->
 		<div class="f-content" data-js="content">
-		Sample Container here.
+
+      <!-- Facebook login page-->
+      <div data-js="page-fb-login">
+        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login"></fb:login-button>
+      </div>
+
+      <!-- Dropbox login page-->
+      <div data-js="page-db-login" class="hide">
+      </div>
+
+      <!-- Album sync page-->
+      <div data-js="page-album-upload" class="hide">
+      </div>
+
 		</div>
 	</div>
 
-
-<div id="fb-root"></div>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- get our in-house script -->
+<script src="js/script.js"></script>
+<!-- get FB button -->
+<div id="fb-root"></div>
     <script>
 
     window.fbAsyncInit = function() {
