@@ -46,7 +46,6 @@ ul.thumbnails.image_picker_selector li .thumbnail {
 	border-color: #ddd;
 }
 
-<<<<<<< HEAD
 .thumbnail {
 	margin: 0;
 }
@@ -55,7 +54,4 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected {
 	background: none;
 	border-color: #87aaeb;
 }
-
-=======
->>>>>>> 2c79990008022b575e09ac1d75377bc13ff83227
 
