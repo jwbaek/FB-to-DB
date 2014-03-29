@@ -11,24 +11,24 @@
 </head>
 <body>
 
-	<div class="f-container container" data-js="container">
+   <div data-js="page-fb-login" class="page-fb-login">
+        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login" size="large"></fb:login-button>
+      </div>
 
+	<div class="f-container container" data-js="container">
+  
     <!-- Title -->
     <div class="f-title">
+       <!-- Facebook login page-->
+     
       <img src="img/logo.png" />
       <div class="f-explain">
-        Photos you're tagged in &rarr; Dropbox.
+        FB2DB
       </div>
     </div>
 
     <!-- Put your content here -->
 		<div class="f-content" data-js="content">
-
-      <!-- Facebook login page-->
-      <div data-js="page-fb-login" class="page-fb-login">
-        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login" size="large"></fb:login-button>
-      </div>
-
       <!-- Album sync page-->
       <div data-js="page-album-upload" class="page-album-upload">
   	    <select id='jackie' multiple="multiple" style="border:0px" class="image-picker show-html">

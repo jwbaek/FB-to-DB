@@ -13,7 +13,7 @@ body {
 .f-title {
 	text-align: center;
 	color: #aaa;
-	padding: 50px;
+	padding: 20px;
 }
 
 .f-explain {
@@ -27,8 +27,8 @@ body {
 }
 
 .page-fb-login {
-	text-align: center;
-	margin-bottom: 25px;
+	text-align: right;
+	padding: 20px;
 }
 
 .f-nav {
@@ -46,6 +46,7 @@ ul.thumbnails.image_picker_selector li .thumbnail {
 	border-color: #ddd;
 }
 
+<<<<<<< HEAD
 .thumbnail {
 	margin: 0;
 }
@@ -55,4 +56,6 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected {
 	border-color: #87aaeb;
 }
 
+=======
+>>>>>>> 2c79990008022b575e09ac1d75377bc13ff83227
 
