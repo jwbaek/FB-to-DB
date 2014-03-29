@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
-	// Grab the window elements
+	/* -------------------
+	 * Set up elements
+	 */
+
 	var $container = $('[data-js="container"]');
 
 	var $nav = $('[data-js="nav"]');
@@ -13,7 +16,25 @@ $(document).ready(function(){
 	var $page_db = $('[data-js="page-db-login"]');
 	var $page_upload = $('[data-js="page-album-upload"]');
 
-	// Add event listeners
+	/* -------------------
+	 * Callback functions
+	 */
+
+	// Called when the Facebook login is successful
+	function fbLoginComplete() {
+		$nav_fb.removeClass("active");
+		$nav_db.addClass("active");
+		$page_fb.hide();
+		$page_db.show();
+	}
+
+	// Called when the Dropbox login is successful
+	function dbLoginComplete() {
+		$nav_db.removeClass("active");
+		$nav_upload.addClass("active");
+		$page_db.hide();
+		$page_upload.show();
+	}
 
 	// FB.api(path, method, params, callback)
 	// https://developers.facebook.com/docs/javascript/reference/FB.api
