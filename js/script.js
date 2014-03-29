@@ -10,3 +10,4 @@ function example() {
 }
 
 example()
+console.log('test');
