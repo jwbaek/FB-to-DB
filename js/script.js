@@ -1,13 +1,15 @@
-// empty
+$(document).ready(function(){
 
-// FB.api(path, method, params, callback)
-// https://developers.facebook.com/docs/javascript/reference/FB.api
+	console.log('jquery works');
 
-function example() {
-    FB.api('/me/photos', function(response) {
-        console.log(response);
-    });
-}
+	// FB.api(path, method, params, callback)
+	// https://developers.facebook.com/docs/javascript/reference/FB.api
+	function example() {
+	    FB.api('/me/photos', function(response) {
+	        console.log(response);
+	    });
+	}
 
-example()
-console.log('test');
+	example();
+
+});
