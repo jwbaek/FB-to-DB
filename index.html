@@ -33,8 +33,11 @@
       <div data-js="page-album-upload" class="page-album-upload" style="display:none;">
         <button onclick="on_all(true)" type="button" class="btn btn-primary" data-toggle="button">Select All</button>
         <button onclick="on_all(false)" type="button" class="btn btn-primary" data-toggle="button">Deselect All</button>
-  	    <select id='jackie' multiple="multiple" style="border:0px" class="image-picker show-html">
-    		</select>
+
+        <div class="image-container">
+    	    <select id='jackie' multiple="multiple" style="border:0px" class="image-picker show-html">
+      		</select>
+        </div>
 
         <button onclick="save_to_dropbox()" type="button" class="btn btn-primary" data-toggle="button">Save to Dropbox</button>
       </div>
