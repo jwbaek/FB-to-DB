@@ -1,9 +1,12 @@
 <head>
     <title> FB-to-DB </title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="f-container" data-js="container">
+
+	<div class="f-container container" data-js="container">
 
     <!-- Title -->
     <div class="f-title">
@@ -14,7 +17,7 @@
     <!-- Just a pretty navigation -->
 		<div class="f-nav" data-js="nav">
 			<ol>
-				<li data-js="nav-fb-login">Login to Facebook</li>
+				<li class="active" data-js="nav-fb-login">Login to Facebook</li>
 				<li data-js="nav-db-login">Login to Dropbox</li>
 				<li data-js="nav-album-upload">Save ALL the photos!</li>
 			</ol>
@@ -23,12 +26,16 @@
 		<div class="f-content" data-js="content">
 
       <!-- Facebook login page-->
+
       <div data-js="page-fb-login">
-        <fb:login-button autologoutlink="true" scope="publish_stream"></fb:login-button>
+        Facebook login button here.
+        <fb:login-button autologoutlink="true" scope="publish_stream,user_photos" onlogin="login"></fb:login-button>
+
       </div>
 
       <!-- Dropbox login page-->
       <div data-js="page-db-login" class="hide">
+        Dropbox login button here.
       </div>
 
       <!-- Album sync page-->
@@ -79,15 +86,17 @@
 
           </div> <!-- /container -->
 
+      <div data-js="page-album-upload" class="hide">
+        Album display here.
       </div>
 
 		</div>
 	</div>
 
-<!-- Extra script stuff down here -->
-<!-- get jQuery -->
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- get Bootstrap -->
+<script src="../js/bootstrap.min.js"></script>
 <!-- get our in-house script -->
 <script src="js/script.js"></script>
 <!-- get FB button -->
@@ -97,9 +106,14 @@
     window.fbAsyncInit = function() {
       FB.init({appId: '458180437615708', status: true, cookie: true,
                xfbml: true});
-      FB.Event.subscribe('{% if current_user %}auth.logout{% else %}auth.login{% endif %}', function(response) {
-        window.location.reload();
+      FB.api('/me/photos', function(response) {
+        console.log('RESPONSE:', response);
       });
+      // FB.Event.subscribe('{% if current_user %}auth.logout{% else %}auth.login{% endif %}', function(response) {
+      //   window.location.reload();
+
+      // });
+
     };
     (function() {
       var e = document.createElement('script');

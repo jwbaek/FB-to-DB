@@ -1,4 +1,8 @@
 body {
-    font: 12px arial;
-    color: #333333;
+  font: 12px arial;
+  color: #333333;
+}
+
+.active {
+	color: red;
 }
