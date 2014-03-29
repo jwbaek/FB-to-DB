@@ -5,6 +5,7 @@ var $content = $('[data-js="content"]');
 var $page_fb = $('[data-js="page-fb-login"]');
 var $page_upload = $('[data-js="page-album-upload"]');
 
+
 window.fbAsyncInit = function() {
       FB.init({appId: '458180437615708', status: true, cookie: true,
                xfbml: true});
@@ -14,13 +15,10 @@ window.fbAsyncInit = function() {
       FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
             $page_upload.show();
+            get_facebook_photos();
         } else {
             $page_upload.hide();
         }
-      });
-
-      FB.api('/me/photos', function(response) {
-        console.log('RESPONSE:', response);
       });
 
     };
@@ -47,14 +45,16 @@ var THUMB_TO_URL = {};
 
 function login() {
     fbLoginComplete();
+    get_facebook_photos();
+}
+
+function get_facebook_photos() {
     FB.api('/me/photos', function (response) {
         // response.data has all the data
-        var files = [];
         for (var i = 0; i<response.data.length; i++) {
             var curr = response.data[i];
             var url = curr.source;
             var thumbnail_url = curr.images[curr.images.length-1].source;
-            files.push({url: url, filename: 'FacebookPhoto'+i});
             PHOTO_OBJECTS.push({
                 url:url,
                 thumbnail_url:thumbnail_url,
@@ -62,13 +62,10 @@ function login() {
             THUMB_TO_URL[thumbnail_url] = url;
         }
         load_thumbnails();
-        options = {};
-        options['files'] = files;
     });
 }
 
 var load_thumbnails = function() {
-    console.log('LOADING thumbnail')
     var arr = PHOTO_OBJECTS;
     var album_container = document.getElementById("jackie");
     var arr_len = arr.length;
@@ -81,6 +78,7 @@ var load_thumbnails = function() {
         <div>{arr_thumbs}</div>,
         album_container
         );
+    $('#jackie').show();
     $("select").imagepicker();
 };
 
