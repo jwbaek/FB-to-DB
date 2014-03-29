@@ -20,6 +20,8 @@ function fbLoginComplete() {
 	$page_upload.show();
 }
 
+var PHOTO_OBJECTS = [];
+
 
 function login() {
     fbLoginComplete();
@@ -33,8 +35,13 @@ function login() {
             url = curr.source;
             files.push({url: url, filename: 'FacebookPhoto'+i});
             console.log(url);
+            PHOTO_OBJECTS.push({
+                url:url,
+                thumbnail_url:curr.images[curr.images.length-1].source
+            });
         }
         console.log('files', files);
+        console.log('OBJECTS', PHOTO_OBJECTS);
         options = {};
         options['files'] = files;
         Dropbox.save(options);
