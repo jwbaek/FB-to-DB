@@ -1,7 +1,12 @@
+html {
+  background: url('../img/bg.png');
+}
+
 body {
   font: 12px arial;
   color: #333333;
-  background: url('../img/bg.png');
+  height: 100%;
+  background: url('../img/bottom.png') bottom center no-repeat;
 }
 
 .active {
