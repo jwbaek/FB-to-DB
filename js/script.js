@@ -50,6 +50,10 @@ function login() {
 }
 
 function get_facebook_photos() {
+    var target = document.getElementById('spinner');
+    var spinner = new Spinner().spin(target);
+    // var spinner = new Spinner().spin();
+    target.appendChild(spinner.el);
     FB.api('/me/photos', function (response) {
         // response.data has all the data
         for (var i = 0; i<response.data.length; i++) {
@@ -63,6 +67,7 @@ function get_facebook_photos() {
             THUMB_TO_URL[thumbnail_url] = url;
         }
         load_thumbnails();
+        spinner.stop()
     });
 }
 
