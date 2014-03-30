@@ -43,6 +43,11 @@ body {
 	padding-bottom: 200px;
 }
 
+#spinner {
+	text-align: center;
+	margin-left: 50%;
+}
+
 /* Overrides to image-picker */
 
 ul.thumbnails.image_picker_selector li .thumbnail {
