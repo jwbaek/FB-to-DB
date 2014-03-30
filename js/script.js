@@ -5,10 +5,15 @@ var $content = $('[data-js="content"]');
 var $page_fb = $('[data-js="page-fb-login"]');
 var $page_upload = $('[data-js="page-album-upload"]');
 
+var APP_ID = null;
+
 
 $page_upload.hide();
 window.fbAsyncInit = function() {
-      FB.init({appId: '458180437615708', status: true, cookie: true,
+      if (APP_ID == null) {
+        throw 'Need a Facebook app ID.'
+      }
+      FB.init({appId: APP_ID, status: true, cookie: true,
                xfbml: true});
 
       // Check if user is connected already
