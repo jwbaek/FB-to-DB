@@ -1,6 +1,8 @@
 FB-to-DB
 ========
 
+![Example of FB2DB](/img/fb2dbexample.jpg)
+
 Contributors:
 * Holly Xu
 * Emily Lam
@@ -22,5 +24,3 @@ Installation:
 4. Make sure you grant localhost:8000 in 'Valid OAuth redirect URIs' in Facebook Apps Setting.
 5. Run python -m SimpleHTTPServer
 6. You should see the App up and running in localhost:8000.
-
-
