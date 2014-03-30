@@ -66,8 +66,8 @@ function get_facebook_photos() {
             });
             THUMB_TO_URL[thumbnail_url] = url;
         }
-        load_thumbnails();
         spinner.stop()
+        load_thumbnails();
     });
 }
 
