@@ -6,7 +6,7 @@ html {
 body {
   font: 12px arial;
   color: #333333;
-  background: url('../img/bottom.png') no-repeat;
+  background: no-repeat;
   background-position: center bottom;
 }
 
@@ -40,7 +40,7 @@ body {
 }
 
 .f-content {
-	padding-bottom: 200px;
+	padding-bottom: 80px;
 }
 
 #spinner {
