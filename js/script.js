@@ -5,7 +5,7 @@ var $content = $('[data-js="content"]');
 var $page_fb = $('[data-js="page-fb-login"]');
 var $page_upload = $('[data-js="page-album-upload"]');
 
-var APP_ID = null;
+var APP_ID = '458180437615708';
 
 
 $page_upload.hide();
@@ -115,7 +115,8 @@ function save_to_dropbox() {
     var files = []; // to put into dropbox API
     for (var i = 0; i < urls.length; i++) {
         var url = urls[i];
-        files.push({url: url, filename: 'FacebookPhoto'+i+'.jpg'});
+        var currTime = Math.floor(new Date().getTime()/1000);
+        files.push({url: url, filename: 'FB2DB-'+currTime+'-'+i+'.jpg'});
     }
     options = {};
     options['files'] = files;
