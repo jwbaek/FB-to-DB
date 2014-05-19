@@ -39,9 +39,12 @@ window.fbAsyncInit = function() {
  * Callback functions
  */
 
-// each object has a url and a thumbnail_url
-var PHOTO_OBJECTS = [];
+// each photo object has a url and a thumbnail_url
+var PAGE_TO_PHOTO = {};
 var THUMB_TO_URL = {};
+var NEXT_PAGE_URL = '';
+var CURRENT_PAGE = 1;
+var SPINNER = null;
 
 function login() {
   FB.getLoginStatus(function(response) {
@@ -54,31 +57,68 @@ function login() {
   });
 }
 
-function get_facebook_photos() {
-    var target = document.getElementById('spinner');
-    var spinner = new Spinner().spin(target);
-    // var spinner = new Spinner().spin();
-    target.appendChild(spinner.el);
-    FB.api('/me/photos', function (response) {
-        // response.data has all the data
-        for (var i = 0; i<response.data.length; i++) {
-            var curr = response.data[i];
-            var url = curr.source;
-            var thumbnail_url = curr.images[curr.images.length-1].source;
-            PHOTO_OBJECTS.push({
-                url:url,
-                thumbnail_url:thumbnail_url,
-            });
-            THUMB_TO_URL[thumbnail_url] = url;
-        }
-        spinner.stop()
-        load_thumbnails();
-    });
+function get_older_photos() {
+    CURRENT_PAGE++;
+    return get_photos_for_page(CURRENT_PAGE, NEXT_PAGE_URL);
 }
 
+function get_newer_photos() {
+    CURRENT_PAGE--;
+    return get_photos_for_page(CURRENT_PAGE);
+}
+
+function get_photos_for_page(n, url) {
+    // disable 'previous' button if on first page
+    if (n == 1) {
+        $('#previous').addClass('disabled');
+    } else {
+        $('#previous').removeClass('disabled');
+    }
+
+    // spin spinner!
+    var target = document.getElementById('spinner');
+    SPINNER = new Spinner().spin(target);
+    target.appendChild(SPINNER.el);
+
+    // don't load photos again if already there
+    if (PAGE_TO_PHOTO[n]) {
+        load_thumbnails();
+    } else {
+        $.ajax({url:url, success:process_facebook_response});
+    }
+}
+
+function get_facebook_photos() {
+    var target = document.getElementById('spinner');
+    SPINNER = new Spinner().spin(target);
+    target.appendChild(SPINNER.el);
+    FB.api('/me/photos', process_facebook_response);
+}
+
+// add photos from response to PAGE_TO_PHOTO object
+function process_facebook_response(response) {
+    NEXT_PAGE_URL = response.paging.next;
+    PAGE_TO_PHOTO[CURRENT_PAGE] = []
+    // response.data has all the data
+    for (var i = 0; i<response.data.length; i++) {
+        var curr = response.data[i];
+        var url = curr.source;
+        var thumbnail_url = curr.images[curr.images.length-1].source;
+        PAGE_TO_PHOTO[CURRENT_PAGE].push({
+            url:url,
+            thumbnail_url:thumbnail_url,
+        });
+        THUMB_TO_URL[thumbnail_url] = url;
+    }
+    load_thumbnails();
+}
+
+// load thumbnails for current page
 var load_thumbnails = function() {
-    var arr = PHOTO_OBJECTS;
+    SPINNER.stop()
+    var arr = PAGE_TO_PHOTO[CURRENT_PAGE];
     var album_container = document.getElementById("jackie");
+    album_container.innerHTML = "";  // clear what was there previously
     var arr_len = arr.length;
     var arr_thumbs = []
     for (var i = 0; i < arr_len; i++) {

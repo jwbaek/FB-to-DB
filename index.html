@@ -28,7 +28,7 @@
     </div>
 
     <!-- Put your content here -->
-      <div id='spinner'></div>
+    <div id='spinner'></div>
 		<div class="f-content" data-js="content">
       <!-- Album sync page-->
       <div data-js="page-album-upload" class="page-album-upload" style="display:none;">
@@ -38,11 +38,17 @@
           <button onclick="save_to_dropbox()" type="button" class="btn btn-primary" data-toggle="button">Save to Dropbox</button>
         </div>
 
+        <!-- Pictures go here -->
         <div class="image-container">
     	    <select id='jackie' multiple="multiple" style="border:0px" class="image-picker show-html">
       		</select>
         </div>
 
+        <!-- footer -->
+        <ul class="pager">
+          <li id="previous" class="previous disabled"><a onclick="get_newer_photos()" href="#">&larr; Newer</a></li>
+          <li class="next"><a onclick="get_older_photos()" href="#">Older &rarr;</a></li>
+        </ul>
         <button onclick="save_to_dropbox()" type="button" class="btn btn-primary" data-toggle="button">Save to Dropbox</button>
       </div>
 
