@@ -86,6 +86,8 @@ ul.thumbnails.image_picker_selector li .image_picker_image {
 }
 
 ul.thumbnails.image_picker_selector li .thumbnail.selected {
-	background:#87aaeb;
+	background: #f0fbff;
+	border-color: #3D74DB;
 }
+
 

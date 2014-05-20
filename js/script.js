@@ -7,7 +7,6 @@ var $page_upload = $('[data-js="page-album-upload"]');
 
 var APP_ID = '458180437615708';
 
-
 $page_upload.hide();
 window.fbAsyncInit = function() {
       if (APP_ID == null) {
@@ -41,7 +40,7 @@ window.fbAsyncInit = function() {
 
 // each photo object has a url and a thumbnail_url
 var PAGE_TO_PHOTO = {};
-var THUMB_TO_URL = {};
+var THUMBNAIL_TO_PHOTO = {};
 var NEXT_PAGE_URL = '';
 var CURRENT_PAGE = 1;
 var SPINNER = null;
@@ -70,9 +69,9 @@ function get_newer_photos() {
 function get_photos_for_page(n, url) {
     // disable 'previous' button if on first page
     if (n == 1) {
-        $('#previous').addClass('disabled');
+        $('#previous').hide();
     } else {
-        $('#previous').removeClass('disabled');
+        $('#previous').show();
     }
 
     // spin spinner and show overlay
@@ -101,6 +100,7 @@ function get_facebook_photos() {
 
 // add photos from response to PAGE_TO_PHOTO object
 function process_facebook_response(response) {
+    console.log(response)
     NEXT_PAGE_URL = response.paging.next;
     PAGE_TO_PHOTO[CURRENT_PAGE] = [];
     // response.data has all the data
@@ -108,11 +108,13 @@ function process_facebook_response(response) {
         var curr = response.data[i];
         var url = curr.images[0].source;
         var thumbnail_url = curr.images[curr.images.length-1].source;
-        PAGE_TO_PHOTO[CURRENT_PAGE].push({
+        var photo = {
             url:url,
             thumbnail_url:thumbnail_url,
-        });
-        THUMB_TO_URL[thumbnail_url] = url;
+            id:curr.id,
+        }
+        PAGE_TO_PHOTO[CURRENT_PAGE].push(photo);
+        THUMBNAIL_TO_PHOTO[thumbnail_url] = photo;
     }
     load_thumbnails();
 }
@@ -149,22 +151,20 @@ function on_all(selected) {
     $("select").imagepicker();
 }
 
-
 function save_to_dropbox() {
     var selected_photos = $('.selected img');
-    var urls = [];
+    var photos = [];
     for (var i = 0; i<selected_photos.length; i++) {
         var curr = selected_photos[i];
         var thumbnail_url = $(curr).attr('src');
-        var url = THUMB_TO_URL[thumbnail_url];
-        urls.push(url);
+        var photo = THUMBNAIL_TO_PHOTO[thumbnail_url];
+        photos.push(photo);
     }
 
     var files = []; // to put into dropbox API
-    for (var i = 0; i < urls.length; i++) {
-        var url = urls[i];
-        var currTime = Math.floor(new Date().getTime()/1000);
-        files.push({url: url, filename: 'FB2DB-'+currTime+'-'+i+'.jpg'});
+    for (var i = 0; i < photos.length; i++) {
+        var photo = photos[i];
+        files.push({url: photo.url, filename: 'FB2DB-'+photo.id+'.jpg'});
     }
     options = {};
     options['files'] = files;
