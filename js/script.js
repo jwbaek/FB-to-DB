@@ -102,7 +102,7 @@ function process_facebook_response(response) {
     // response.data has all the data
     for (var i = 0; i<response.data.length; i++) {
         var curr = response.data[i];
-        var url = curr.source;
+        var url = curr.images[0].source;
         var thumbnail_url = curr.images[curr.images.length-1].source;
         PAGE_TO_PHOTO[CURRENT_PAGE].push({
             url:url,
