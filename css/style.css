@@ -62,10 +62,10 @@ ul.thumbnails.image_picker_selector li .thumbnail {
 
 .thumbnail {
 	margin: 0;
+
 }
 
 ul.thumbnails.image_picker_selector li .thumbnail.selected {
-	background: #f0fbff;
-	border-color: #87aaeb;
+	background:#87aaeb;
 }
 
