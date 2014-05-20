@@ -75,10 +75,11 @@ function get_photos_for_page(n, url) {
         $('#previous').removeClass('disabled');
     }
 
-    // spin spinner!
+    // spin spinner and show overlay
     var target = document.getElementById('spinner');
     SPINNER = new Spinner().spin(target);
     target.appendChild(SPINNER.el);
+    $('#spinOverlay').show();
 
     // don't load photos again if already there
     if (PAGE_TO_PHOTO[n]) {
@@ -89,9 +90,12 @@ function get_photos_for_page(n, url) {
 }
 
 function get_facebook_photos() {
+    // Spin spinner and show overlay
     var target = document.getElementById('spinner');
     SPINNER = new Spinner().spin(target);
     target.appendChild(SPINNER.el);
+    $('#spinOverlay').show();
+
     FB.api('/me/photos', process_facebook_response);
 }
 
@@ -115,7 +119,11 @@ function process_facebook_response(response) {
 
 // load thumbnails for current page
 var load_thumbnails = function() {
-    SPINNER.stop()
+
+    // Stop spinner and hide overlay
+    SPINNER.stop();
+    $('#spinOverlay').hide();
+
     var arr = PAGE_TO_PHOTO[CURRENT_PAGE];
     var album_container = document.getElementById("jackie");
     album_container.innerHTML = "";  // clear what was there previously
