@@ -24,3 +24,7 @@ We use:
 * Holly Xu
 * Jackie Baek
 * Linda Xie
+
+## Credits & Thank yous
+* [Spin.js](http://fgnass.github.io/spin.js/)
+* [Bootstrap](http://getbootstrap.com/)
