@@ -102,7 +102,7 @@ function get_facebook_photos() {
 // add photos from response to PAGE_TO_PHOTO object
 function process_facebook_response(response) {
     NEXT_PAGE_URL = response.paging.next;
-    PAGE_TO_PHOTO[CURRENT_PAGE] = []
+    PAGE_TO_PHOTO[CURRENT_PAGE] = [];
     // response.data has all the data
     for (var i = 0; i<response.data.length; i++) {
         var curr = response.data[i];
@@ -131,7 +131,7 @@ var load_thumbnails = function() {
     var arr_thumbs = []
     for (var i = 0; i < arr_len; i++) {
         var source = arr[i].thumbnail_url;
-        arr_thumbs[i] = <option data-img-src={source} value={i}>hi</option>
+        arr_thumbs[i] = <option data-img-src={source} value={i}></option>
     }
     React.renderComponent(
         <div>{arr_thumbs}</div>,
