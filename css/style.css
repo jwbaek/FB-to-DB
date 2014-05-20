@@ -53,6 +53,17 @@ body {
 	margin-left: 50%;
 }
 
+#spinOverlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.7;
+    position: fixed;
+    display: block;
+    background: #ffffff;
+}
+
 /* Overrides to image-picker */
 
 ul.thumbnails.image_picker_selector li .thumbnail {
@@ -62,6 +73,10 @@ ul.thumbnails.image_picker_selector li .thumbnail {
 
 .thumbnail {
 	margin: 0;
+}
+
+.thumbnail:hover {
+    opacity: 0.7;
 }
 
 ul.thumbnails.image_picker_selector li .thumbnail.selected {
