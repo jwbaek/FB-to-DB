@@ -152,11 +152,11 @@ function on_all(selected) {
 }
 
 function save_to_dropbox() {
-    var selected_photos = $('.selected img');
+    var selected_photos = $('.selected .image_picker_image');
     var photos = [];
     for (var i = 0; i<selected_photos.length; i++) {
         var curr = selected_photos[i];
-        var thumbnail_url = $(curr).attr('src');
+        var thumbnail_url = $(curr).css('background-image').replace('url(','').replace(')','');
         var photo = THUMBNAIL_TO_PHOTO[thumbnail_url];
         photos.push(photo);
     }
